@@ -4,7 +4,6 @@ module M2ySenff
 
     def initialize(access_key, secret_key, url)
       startModule(access_key, secret_key, url)
-      @env = env
     end
 
     def p2pTransfer(body)
