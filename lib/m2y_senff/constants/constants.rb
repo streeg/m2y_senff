@@ -1,7 +1,7 @@
 module M2ySenff
 
   #banks
-  BANK_ID = 276
+  BANK_ID = 1414
   INSTITUTION_ID = 1414
   ### Paths
 
