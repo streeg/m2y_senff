@@ -81,6 +81,10 @@ module M2ySenff
       headers
     end
 
+    def address_url
+      @url.gsub('8090', '8093')
+    end
+
   end
 
 end

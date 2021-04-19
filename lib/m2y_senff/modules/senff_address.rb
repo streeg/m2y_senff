@@ -16,8 +16,5 @@ module M2ySenff
       SenffModel.new(response)
     end
 
-    def address_url
-      @url.gsub('8090', '8093')
-    end
   end
 end
