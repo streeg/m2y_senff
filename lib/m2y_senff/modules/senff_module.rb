@@ -60,6 +60,25 @@ module M2ySenff
         end
         false
       end
+      #dev only
+      false
+    end
+
+    def getAddressHeaders
+      url = address_url + USER_ADDRESS_PATH
+      response = HTTParty.get(url, basic_auth: @request.auth)
+
+      headers = {}
+
+      token = response.headers["set-cookie"]
+      if !token.nil?
+        token = token.split("XSRF-TOKEN=").last.split(";").first
+        puts token
+        headers["X-XSRF-TOKEN"] = token
+        headers["Cookie"] = "XSRF-TOKEN=#{token}"
+      end
+      puts headers
+      headers
     end
 
   end

@@ -15,6 +15,15 @@ module M2ySenff
       end
     end
 
+
+    def searchCustomers(body)
+      headers = getAddressHeaders
+      body[:nrInst] = getInstitution
+      response = @request.post(address_url + CHECK_CUSTOMERS, body, headers)
+      puts response
+      SenffModel.new(response)
+    end
+
   end
 
 end

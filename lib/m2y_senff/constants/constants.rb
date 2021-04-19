@@ -38,5 +38,6 @@ module M2ySenff
   SEND_PROPOSAL = "/BJ79M02/BJ79M02/BJ79SS0101A/proposta"
 
   CHECK_ADDRESS = "/BJ01M06/clientesEndereco/pesquisa"
+  CHECK_CUSTOMERS = "/BJ01M06/clientes/pesquisa"
   USER_ADDRESS_PATH = "/BJ01M06/user"
 end
