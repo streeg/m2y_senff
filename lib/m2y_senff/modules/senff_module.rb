@@ -17,6 +17,10 @@ module M2ySenff
       INSTITUTION_ID
     end
 
+    def json_headers
+      {"Content-Type": "application/json"}
+    end
+
 
     def senffBody(body)
       senff_body = {}

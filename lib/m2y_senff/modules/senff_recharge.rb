@@ -1,14 +1,13 @@
 module M2ySenff
 
-  class SenffPayment < SenffModule
+  class SenffRecharge < SenffModule
 
     def initialize(access_key, secret_key, url)
       startModule(access_key, secret_key, url)
     end
 
-    def validate(ean)
-      url = @url + VALIDATE_PATH + ean
-      puts url
+    def dealers
+      url = @url + DEALERS_PATH
       req = HTTParty.get(url, :verify => false)
       begin
         SenffModel.new(req.parsed_response)
@@ -18,8 +17,7 @@ module M2ySenff
     end
 
     def receipts(account, from, to)
-      url = @url + PAYMENTS_RECEIPTS + "?conta=#{account}&dataInicial=#{from}&dataFinal=#{to}"
-      puts url
+      url = @url + RECHARGES_RECEIPTS + "?conta=#{account}&dataInicial=#{from}&dataFinal=#{to}"
       req = HTTParty.get(url, :verify => false)
       begin
         SenffModel.new(req.parsed_response)
@@ -28,10 +26,10 @@ module M2ySenff
       end
     end
 
-    def find_receipt(account, auth)
-      url = @url + PAYMENTS_RECEIPTS + "?conta=#{account}&autorizacao=#{auth}"
+    def packages(body)
+      url = @url + RECHARGES_PACKAGES
       puts url
-      req = HTTParty.get(url, :verify => false)
+      req = HTTParty.post(url, body: body.to_json, :verify => false, headers: json_headers)
       begin
         SenffModel.new(req.parsed_response)
       rescue
@@ -39,8 +37,9 @@ module M2ySenff
       end
     end
 
-    def pay(body)
-      url = @url + PAY
+    def recharge(body)
+      url = @url + RECHARGE
+      puts url
       req = HTTParty.post(url, body: body.to_json, :verify => false, headers: json_headers)
       begin
         SenffModel.new(req.parsed_response)
