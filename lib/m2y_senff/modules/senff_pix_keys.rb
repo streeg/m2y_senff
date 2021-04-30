@@ -45,7 +45,7 @@ module M2ySenff
 
     def remove_key(id, body)
       refreshToken
-      url = @url + PIX_REMOVE_KEY_PATH + "#{id}/excluir"
+      url = @url + PIX_REMOVE_KEY_PATH + "#{id}"
       puts url
       headers = json_headers
       headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_id)}"

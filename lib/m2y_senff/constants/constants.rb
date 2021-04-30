@@ -3,18 +3,17 @@ module M2ySenff
   #banks
   BANK_ID = 1414
   INSTITUTION_ID = 1414
-  
+
   #pix
   SCOPE = "qrcode_api"
   GRANT_TYPE = "client_credentials"
   PIX_AUTH_PATH = "/auth/oauth2/token"
   PIX_ADD_KEY_PATH = "/dict/chave/incluir/"
-  PIX_REMOVE_KEY_PATH = "/dict/"
+  PIX_REMOVE_KEY_PATH = "/dict/chave/excluir/"
   PIX_LIST_KEYS_PATH = "/dict/chave/listar/chave"
   ### Paths
 
   #account
-
   DEPOSIT_PATH = "v1/accounts/deposits"
   PAYMENT_PATH = "v1/payments"
 
@@ -27,7 +26,7 @@ module M2ySenff
   INDIVIDUAL_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101L/buscaDadosCliente"
   CUSTOMERS_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0107A/obterClientes"
   EXTRACT_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101C/listaLancamentos"
-  FUTURE_EXTRACT_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101F/listaLancFuturos" 
+  FUTURE_EXTRACT_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101F/listaLancFuturos"
   RECEIPTS_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101M/obterComprovantes"
   FIND_RECEIPTS_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101N/criarComprovante"
   TRANSFER_PATH = "/API/BJ08M01/BJ08M01/BJ08SS0101K/efetuaLancamentoTransferencia"
@@ -53,12 +52,14 @@ module M2ySenff
   USER_ADDRESS_PATH = "/BJ01M06/user"
 
   #recharge
+  RECHARGE_AUTH_PATH = "/connect/token/"
   DEALERS_PATH = "/api/mobile-rechange/operator"
   RECHARGES_RECEIPTS = "/api/cellphone-topups"
   RECHARGES_PACKAGES = "/api/mobile-rechange/refill-request"
   RECHARGE = "/api/mobile-rechange/request-recharge/pj"
 
   #payments
+  PAYMENT_AUTH_PATH = "/connect/token/"
   VALIDATE_PATH = "/api/bill-payments/"
   PAYMENTS_RECEIPTS = "/api/payments"
   PAY = "/api/bill-payments/pj"
