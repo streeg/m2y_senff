@@ -34,18 +34,18 @@ module M2ySenff
 
     def self.saveToken(basic,token)
       if !token.nil?
-        ENV["SENFF_TOKEN#{basic[0,6]}"] = token.to_s
-        ENV["SENFF_TOKEN_EXPIRY#{basic[0,6]}"] = (Time.now + 1500).to_s
+        ENV["SENFF_TOKEN#{basic.last(6)}"] = token.to_s
+        ENV["SENFF_TOKEN_EXPIRY#{basic.last(6)}"] = (Time.now + 1500).to_s
       end
     end
 
     def self.shouldRefreshToken?(basic)
-      finish_date = ENV["SENFF_TOKEN_EXPIRY#{basic[0,6]}"]
+      finish_date = ENV["SENFF_TOKEN_EXPIRY#{basic.last(6)}"]
       finish_date.nil? || (Time.parse(finish_date.to_s) - 500) < Time.now
     end
 
     def self.get_token(basic)
-      ENV["SENFF_TOKEN#{basic[0,6]}"]
+      ENV["SENFF_TOKEN#{basic.last(6)}"]
     end
 
 

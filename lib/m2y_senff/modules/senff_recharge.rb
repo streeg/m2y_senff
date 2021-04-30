@@ -2,16 +2,19 @@ module M2ySenff
 
   class SenffRecharge < SenffModule
 
-    def initialize(access_key, secret_key, url)
-      startModule(access_key, secret_key, url)
+    def initialize(client_id, client_secret, url, scope, auth_url)
       @auth = SenffAuth.new(client_id, client_secret, url)
       @client_id = client_id
       @client_secret = client_secret
       @url = url
-      @auth = SenffAuth.new(client_id, client_secret, url)
+      @auth = SenffAuth.new(client_id, client_secret, auth_url + RECHARGE_AUTH_PATH, scope)
     end
 
     def dealers
+      refreshToken
+      headers = json_headers
+      headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_id)}"
+
       url = @url + DEALERS_PATH
       req = HTTParty.get(url, :verify => false, headers: headers)
       begin
@@ -22,7 +25,7 @@ module M2ySenff
     end
 
     def refreshToken
-      if SenffHelper.shouldRefreshToken?(@client_id)
+      if SenffHelper.shouldRefreshToken?(@client_secret)
         @auth.generateToken
       end
     end
@@ -45,7 +48,7 @@ module M2ySenff
     def packages(body)
       refreshToken
       headers = json_headers
-      headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_id)}"
+      headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_secret)}"
 
       url = @url + RECHARGES_PACKAGES
       puts url
@@ -60,7 +63,7 @@ module M2ySenff
     def recharge(body)
       refreshToken
       headers = json_headers
-      headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_id)}"
+      headers["Authorization"] = "Bearer #{SenffHelper.get_token(@client_secret)}"
 
       url = @url + RECHARGE
       puts url
