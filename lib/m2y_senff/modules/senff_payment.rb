@@ -40,6 +40,7 @@ module M2ySenff
       url = @url + PAYMENTS_RECEIPTS + "?conta=#{account}&dataInicial=#{from}&dataFinal=#{to}"
       puts url
       req = HTTParty.get(url, :verify => false, headers: headers)
+      puts req.to_json
       begin
         SenffModel.new(req.parsed_response)
       rescue
