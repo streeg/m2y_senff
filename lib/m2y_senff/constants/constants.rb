@@ -52,14 +52,14 @@ module M2ySenff
   USER_ADDRESS_PATH = "/BJ01M06/user"
 
   #recharge
-  RECHARGE_AUTH_PATH = "/connect/token/"
+  RECHARGE_AUTH_PATH = "/connect/token"
   DEALERS_PATH = "/api/mobile-rechange/operator"
   RECHARGES_RECEIPTS = "/api/cellphone-topups"
   RECHARGES_PACKAGES = "/api/mobile-rechange/refill-request"
   RECHARGE = "/api/mobile-rechange/request-recharge/pj"
 
   #payments
-  PAYMENT_AUTH_PATH = "/connect/token/"
+  PAYMENT_AUTH_PATH = "/connect/token"
   VALIDATE_PATH = "/api/bill-payments/"
   PAYMENTS_RECEIPTS = "/api/payments"
   PAY = "/api/bill-payments/pj"

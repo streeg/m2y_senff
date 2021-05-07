@@ -19,15 +19,23 @@ module M2ySenff
         }
 
         puts data.to_json
+        puts data.to_json
 
-        response = HTTParty.post(@url + PIX_AUTH_PATH,
-          body: URI.encode_www_form(data),
+        if !@url.include?("connect")
+          @url += PIX_AUTH_PATH
+        end
+
+        puts @url
+        body = URI.encode_www_form(data)
+        puts body.to_s
+        response = HTTParty.post(@url,
+          body: body,
           headers: { 
             'Content-Type' => 'application/x-www-form-urlencoded'
           }, :verify => false
         )
 
-        puts response
+        puts response.to_json
 
         if response.code == 200
           SenffHelper.saveToken(@client_secret, response.parsed_response["access_token"])
