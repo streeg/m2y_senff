@@ -22,7 +22,7 @@ module M2ySenff
     end
 
 
-    def senffBody(body)
+    def senffBody(body, with_digit = false)
       senff_body = {}
       senff_body[:cdCta] = body[:cdCta]
       senff_body[:nrAgen] = body[:nrAgen]
@@ -33,7 +33,7 @@ module M2ySenff
       senff_body[:nrCpfcnpj] = body[:beneficiary][:docIdCpfCnpjEinSSN]
       senff_body[:nrAgedes] = body[:beneficiary][:agency]
       senff_body[:cdCtades] = body[:beneficiary][:account]
-      if !body[:beneficiary][:accountDigit].nil?
+      if !body[:beneficiary][:accountDigit].nil? && with_digit
         senff_body[:cdCtades] = "#{senff_body[:cdCtades]}#{body[:beneficiary][:accountDigit]}".to_i
       end
       senff_body[:nmFav] = body[:beneficiary][:name]
@@ -44,7 +44,9 @@ module M2ySenff
     end
 
     def addFav(body)
-      senff_body = senffBody(body)
+      senff_body = senffBody(body, false)
+      response = @request.post(@url + ADD_FAV_PATH, senff_body)
+      senff_body = senffBody(body, true)
       response = @request.post(@url + ADD_FAV_PATH, senff_body)
       puts response
     end

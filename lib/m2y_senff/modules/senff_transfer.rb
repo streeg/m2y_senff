@@ -8,9 +8,9 @@ module M2ySenff
 
 
     def bankTransfers(body, is_ted, date = nil)
-      if !checkFav(body)
+      # if !checkFav(body)
         addFav(body)
-      end
+      # end
 
       #fix cdt_params
       senff_body = {}
