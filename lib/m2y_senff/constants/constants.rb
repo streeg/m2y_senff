@@ -11,6 +11,10 @@ module M2ySenff
   PIX_REMOVE_KEY_PATH = '/dict/chave/excluir/'
   PIX_LIST_KEYS_PATH = '/dict/chave/listar/chave'
   PIX_LIST_CLAIM_KEY_PATH = '/dict/chave/reivindicacao/listar'
+  PIX_CLAIM_KEY_PATH = 'dict/chave/reivindicacao/incluir'
+  # PIX_CONFIRM_CLAIM_KEY_PATH = "dict/chave/reivindicacao/#{idReivindicacao}/confirmar"
+  # PIX_DENY_CLAIM_KEY_PATH = "dict/chave/reivindicacao/#{idReivindicacao}/cancelar"
+
   ### Paths
 
   # account
