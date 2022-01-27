@@ -25,6 +25,45 @@ module M2ySenff
       end
     end
 
+    def complete_key_claim(id, body)
+      refreshToken
+      url = @url + PIX_COMPLETE_KEY_CLAIM_PATH + "#{id}/concluir"
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
+    def deny_key_claim(id, body)
+      refreshToken
+      url = @url + PIX_DENY_KEY_CLAIM_PATH + "#{id}/cancelar"
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
+    def confirm_key_claim(id, body)
+      refreshToken
+      url = @url + PIX_CONFIRM_KEY_CLAIM_PATH + "#{id}/confirmar"
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
     def list_claim_keys(body)
       refreshToken
       url = @url + PIX_LIST_CLAIM_KEY_PATH
