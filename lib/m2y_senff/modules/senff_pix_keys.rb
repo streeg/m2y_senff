@@ -91,6 +91,20 @@ module M2ySenff
       end
     end
 
+    def claim_key(body)
+      refreshToken
+      url = @url + PIX_CLAIM_KEY_PATH
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
     def remove_key(id, body)
       refreshToken
       url = @url + PIX_REMOVE_KEY_PATH + id.to_s
