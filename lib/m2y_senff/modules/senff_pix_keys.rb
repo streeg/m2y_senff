@@ -30,6 +30,7 @@ module M2ySenff
       url = @url + PIX_COMPLETE_KEY_CLAIM_PATH + "#{id}/concluir"
       headers = json_headers
       headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
       req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
       begin
         SenffModel.new(req.parsed_response)
@@ -56,6 +57,7 @@ module M2ySenff
       url = @url + PIX_CONFIRM_KEY_CLAIM_PATH + "#{id}/confirmar"
       headers = json_headers
       headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
       req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
       begin
         SenffModel.new(req.parsed_response)
