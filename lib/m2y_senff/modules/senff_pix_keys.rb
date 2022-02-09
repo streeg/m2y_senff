@@ -122,5 +122,21 @@ module M2ySenff
         nil
       end
     end
+
+    def validate_key(key, cnpj)
+      refreshToken
+      url = @url + PIX_VALIDATE_KEY_PATH + key.to_s
+      puts url
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
+      headers['PI-PayerId'] = cnpj
+      req = HTTParty.get(url, body: key.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
   end
 end

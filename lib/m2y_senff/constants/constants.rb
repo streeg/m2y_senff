@@ -15,6 +15,7 @@ module M2ySenff
   PIX_CONFIRM_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_DENY_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_COMPLETE_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
+  PIX_VALIDATE_KEY_PATH = '/dict/chave/consultar/'
   ### Paths
 
   # account
