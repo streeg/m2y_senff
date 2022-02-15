@@ -1,5 +1,5 @@
 module M2ySenff
-  class SenffSinqaPixService < SenffModule
+  class SenffSinqaPix < SenffModule
     def initialize(access_key, secret_key, url)
       startModule(access_key, secret_key, url)
     end

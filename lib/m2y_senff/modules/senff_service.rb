@@ -1,28 +1,24 @@
 module M2ySenff
-
   class SenffService < SenffModule
-
     def initialize(access_key, secret_key, url)
       startModule(access_key, secret_key, url)
     end
 
     def p2pTransfer(body)
-      if !checkFav(body)
-        addFav(body)
-      end
+      addFav(body) unless checkFav(body)
 
-      #fix cdt_params
+      # fix cdt_params
       senff_body = {}
       senff_body[:idTitul] = 'C'
 
       senff_body[:cdCta] = body[:cdCta]
       senff_body[:nrAgen] = body[:nrAgen]
       senff_body[:vlLanc] = body[:value]
-      senff_body[:dtLanc] = Time.now.strftime("%Y%m%d")
+      senff_body[:dtLanc] = Time.now.strftime('%Y%m%d')
       senff_body[:tpTransf] = 1
       senff_body[:tpCtaFav] = 'CC'
       senff_body[:nrSeqDes] = 0
-      senff_body[:cdOrigem] = 24556
+      senff_body[:cdOrigem] = 24_556
       senff_body[:nrDocCre] = 9
       senff_body[:cdFin] = 30
       senff_body[:nrSeq] = 0
@@ -37,7 +33,7 @@ module M2ySenff
 
       puts senff_body
 
-      response = @request.post(@url + TRANSFER_PATH, senff_body)
+      response = @request.post(@url + PIX_PATH, senff_body)
 
       puts response
       transferResponse = SenffModel.new(response)
@@ -51,10 +47,8 @@ module M2ySenff
       transferResponse
     end
 
-
     def get_bank
       BANK_ID
     end
-
   end
 end
