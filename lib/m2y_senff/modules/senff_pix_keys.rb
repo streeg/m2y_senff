@@ -147,6 +147,8 @@ module M2ySenff
       headers['Chave-Idempotencia'] = SecureRandom.uuid
       req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
 
+      byebug
+
       begin
         SenffModel.new(req.parsed_response)
       rescue StandardError
