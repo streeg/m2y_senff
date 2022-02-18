@@ -33,11 +33,11 @@ module M2ySenff
 
       puts senff_body
 
-      response = @request.post(@url + PIX_PATH, senff_body)
+      response = @request.post(@url + TRANSFER_PATH, senff_body)
 
       puts response
       transferResponse = SenffModel.new(response)
-
+      
       if transferResponse && transferResponse.efetuaLancamentoTransferencia == 0
         transferResponse.id = Time.now.to_i
         transferResponse.statusCode = 200

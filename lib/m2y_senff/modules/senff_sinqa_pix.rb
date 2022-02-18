@@ -33,12 +33,11 @@ module M2ySenff
 
       puts senff_body
 
-      response = @request.post(@url + PIX_PATH, senff_body)
+      # NOTE: Change to PIX_PATH whenever available
+      response = @request.post(@url + TRANSFER_PATH, senff_body)
 
       puts response
       transferResponse = SenffModel.new(response)
-
-      byebug
 
       if transferResponse && transferResponse.efetuaLancamentoTransferencia == 0
         transferResponse.id = Time.now.to_i
