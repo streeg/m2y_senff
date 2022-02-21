@@ -3,7 +3,7 @@ module M2ySenff
   BANK_ID = 1414
   INSTITUTION_ID = 1414
 
-  # pix
+  # PIX JDPI
   SCOPE = 'qrcode_api'
   GRANT_TYPE = 'client_credentials'
   PIX_AUTH_PATH = '/auth/oauth2/token'
@@ -16,6 +16,7 @@ module M2ySenff
   PIX_DENY_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_COMPLETE_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_VALIDATE_KEY_PATH = '/dict/chave/consultar/'
+  PIX_TRANSFER_PATH = '/spi/api/v2/op'
   ### Paths
 
   # account
@@ -25,6 +26,8 @@ module M2ySenff
   STATEMENT = '/statement'
   WITHDRAW = '/withdraw'
 
+  # PIX SINQA
+  PIX_PATH = '/API/BJ08M01/BJ08M01/BJ08SS0104C/realizarPagamentoPix'
   BANKS_PATH = '/API/BJ08M01/BJ08M01/BJ08SS0102A1/listarBancos'
   ACCOUNT_PATH = '/API/BJ08M01/BJ08M01/BJ08SS0102M/obterContas'
   USER_PATH = '/API/BJ08M01/user'

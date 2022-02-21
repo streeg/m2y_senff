@@ -1,10 +1,10 @@
 module M2ySenff
-  class SenffService < SenffModule
+  class SenffSinqaPix < SenffModule
     def initialize(access_key, secret_key, url)
       startModule(access_key, secret_key, url)
     end
 
-    def p2pTransfer(body)
+    def transfer(body)
       addFav(body) unless checkFav(body)
 
       # fix cdt_params
@@ -33,11 +33,12 @@ module M2ySenff
 
       puts senff_body
 
+      # NOTE: Change to PIX_PATH whenever available
       response = @request.post(@url + TRANSFER_PATH, senff_body)
 
       puts response
       transferResponse = SenffModel.new(response)
-      
+
       if transferResponse && transferResponse.efetuaLancamentoTransferencia == 0
         transferResponse.id = Time.now.to_i
         transferResponse.statusCode = 200

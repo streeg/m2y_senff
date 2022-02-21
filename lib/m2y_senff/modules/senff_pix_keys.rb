@@ -138,5 +138,19 @@ module M2ySenff
         nil
       end
     end
+
+    def transfer(body)
+      refreshToken
+      url = @url + PIX_TRANSFER_PATH
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
   end
 end
