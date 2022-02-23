@@ -14,7 +14,7 @@ module M2ySenff
       senff_body[:cdCta] = body[:cdCta]
       senff_body[:nrAgen] = body[:nrAgen]
       senff_body[:vlLanc] = body[:value]
-      senff_body[:dtLanc] = (DateTime.now + 1.day).strftime('%Y%m%d')
+      senff_body[:dtLanc] = (DateTime.now).strftime('%Y%m%d')
       senff_body[:tpTransf] = 1
       senff_body[:tpCtaFav] = 'CC'
       senff_body[:nrSeqDes] = 0
