@@ -152,5 +152,22 @@ module M2ySenff
         nil
       end
     end
+
+    def generate_static_qrcode(body)
+      refreshToken
+      url = @url + PIX_STATIC_QRCODE_PATH
+      puts url
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      headers['Chave-Idempotencia'] = SecureRandom.uuid
+      puts body
+      req = HTTParty.post(url, body: body.to_json, verify: false, headers: headers)
+      puts req
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
   end
 end
