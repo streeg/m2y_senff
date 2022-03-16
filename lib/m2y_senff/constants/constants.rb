@@ -17,6 +17,7 @@ module M2ySenff
   PIX_COMPLETE_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_VALIDATE_KEY_PATH = '/dict/chave/consultar/'
   PIX_TRANSFER_PATH = '/spi/api/v2/op'
+  PIX_STATIC_QRCODE_PATH = '/qrcode/estatico/gerar'
   ### Paths
 
   # account
