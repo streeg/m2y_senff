@@ -18,6 +18,9 @@ module M2ySenff
   PIX_VALIDATE_KEY_PATH = '/dict/chave/consultar/'
   PIX_TRANSFER_PATH = '/spi/api/v2/op'
   PIX_STATIC_QRCODE_PATH = '/qrcode/estatico/gerar'
+  PIX_DYNAMIC_QRCODE_PATH = '/qrcode/dinamico/gerar'
+  PIX_DYNAMIC_QRCODE_DUEDATE_PATH = '/qrcode/dinamico/cobv/gerar'
+
   ### Paths
 
   # account
