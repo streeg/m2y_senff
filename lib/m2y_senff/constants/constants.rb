@@ -20,6 +20,8 @@ module M2ySenff
   PIX_STATIC_QRCODE_PATH = '/qrcode/estatico/gerar'
   PIX_DYNAMIC_QRCODE_PATH = '/qrcode/dinamico/gerar'
   PIX_DYNAMIC_QRCODE_DUEDATE_PATH = '/qrcode/dinamico/cobv/gerar'
+  PIX_REVERSAL_REQUIRE_PATH = '/spi/devolucao'
+  PIX_REVERSAL_CONSULT_PATH = 'spi/devolucao/'
 
   ### Paths
 
