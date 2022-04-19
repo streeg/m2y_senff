@@ -16,8 +16,13 @@ module M2ySenff
   PIX_DENY_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_COMPLETE_KEY_CLAIM_PATH = '/dict/chave/reivindicacao/'
   PIX_VALIDATE_KEY_PATH = '/dict/chave/consultar/'
-  PIX_TRANSFER_PATH = '/spi/api/v2/op'
+  PIX_TRANSFER_PATH = '/pagamentopix/op'
   PIX_STATIC_QRCODE_PATH = '/qrcode/estatico/gerar'
+  PIX_DYNAMIC_QRCODE_PATH = '/qrcode/dinamico/gerar'
+  PIX_DYNAMIC_QRCODE_DUEDATE_PATH = '/qrcode/dinamico/cobv/gerar'
+  PIX_REVERSAL_REQUIRE_PATH = '/spi/devolucao'
+  PIX_REVERSAL_CONSULT_PATH = 'spi/devolucao/'
+
   ### Paths
 
   # account

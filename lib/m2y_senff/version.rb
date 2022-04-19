@@ -1,3 +1,3 @@
 module M2ySenff
-  VERSION = '0.0.18'
+  VERSION = '0.5.0'
 end
