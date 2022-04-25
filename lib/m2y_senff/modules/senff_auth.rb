@@ -20,8 +20,7 @@ module M2ySenff
 
         puts data.to_json
         puts data.to_json
-
-        if !@url.include?("connect")
+        if !@url.include?("connect") && !@url.include?("BJ08M06")
           @url += PIX_AUTH_PATH
         end
 
