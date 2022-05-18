@@ -4,20 +4,21 @@ module M2ySenff
       startModule(access_key, secret_key, url)
     end
 
-    def getContracts(params)
+    def contractsList(params)
       headers = getAddressHeaders
       params[:nrInst] = getInstitution
       puts params
-      url = @url + WORKING_CAPITAL_LOAN
+      url = @url + WORKING_CAPITAL_CONTRACTS_LIST
       puts url
       response = @request.post(url, params, headers)
+      #TODO desfazer o mock depois de EP ajustado pela Sinqia.
       response = {
           "cdErroInterno": 0,
           "contratos": [
             {
               "nrInst": 1414,
               "nrAgen": 19,
-              "cdClient": 154008,
+              "cdClient": 144118,
               "nrContra": 3750000,
               "cdProdut": 21210,
               "tpContra": 1,
@@ -172,7 +173,7 @@ module M2ySenff
           {
             "nrInst": 1414,
             "nrAgen": 19,
-            "cdClient": 144673,
+            "cdClient": 144118,
             "nrContra": 3730000,
             "cdProdut": 22210,
             "tpContra": 1,
@@ -331,6 +332,23 @@ module M2ySenff
         }
           ]
         }
+      begin
+        contractsResponse = SenffModel.new(response)
+      rescue StandardError
+        nil
+      end
+      contractsResponse
+    end
+  
+    def getContract(params)
+      headers = getAddressHeaders
+      params[:nrInst] = getInstitution
+      #TODO retirar depois de ajustado o endpoint pela sinquia.
+      params[:cdClient] = 144673   
+      puts params
+      url = @url +WORKING_CAPITAL_GET_CONTRACT
+      puts url
+      response = @request.post(url, params, headers)
       begin
         contractsResponse = SenffModel.new(response)
       rescue StandardError
