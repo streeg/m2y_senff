@@ -503,10 +503,20 @@ module M2ySenff
     def getContract(params)
       headers = getAddressHeaders
       params[:nrInst] = getInstitution
+
       #TODO retirar depois de ajustado o endpoint pela sinquia.
-      params[:cdClient] = 154008
-      params[:cdClient] = 144673 if params[:nrContra].eql?('3730000')
-      url = @url + WORKING_CAPITAL_GET_CONTRACT
+      case params[:nrContra]
+
+      when '3730000'
+        params[:cdClient] = '144673'
+      when '3750000'
+        params[:cdClient] = '154008'
+      else
+        params[:cdClient] = '144118'
+      end
+      
+      puts params
+      url = @url +WORKING_CAPITAL_GET_CONTRACT
       puts url
       response = @request.post(url, params, headers)
       begin
