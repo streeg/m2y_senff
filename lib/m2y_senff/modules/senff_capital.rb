@@ -505,8 +505,9 @@ module M2ySenff
       params[:nrInst] = getInstitution
       #TODO retirar depois de ajustado o endpoint pela sinquia.
       params[:cdClient] = 154008
-      params[:cdClient] = 144673 if params[:nrContra].eql?('3730000')
-      url = @url + WORKING_CAPITAL_GET_CONTRACT
+      params[:cdClient] = 144673 if params[:nrContra].eql?('3730000')   
+      puts params
+      url = @url +WORKING_CAPITAL_GET_CONTRACT
       puts url
       response = @request.post(url, params, headers)
       begin
