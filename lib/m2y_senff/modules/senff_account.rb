@@ -19,6 +19,22 @@ module M2ySenff
       account
     end
 
+    def getAllAccounts(id)
+      nrinst = getInstitution
+      response = @request.get(@url + ACCOUNT_PATH + "?nrCliente=#{id}&nrInst=#{nrinst}")
+      p response
+      account = []
+      response.each do |acc|
+        if acc[:dsProd].include?('Conta Garantida')
+          account.push acc
+          break
+        else
+          next
+        end
+      end
+      SenffModel.new(account.first)
+    end
+
     def findAccount(params)
       params[:nrSeq] = 0
       params[:nrInst] = getInstitution
