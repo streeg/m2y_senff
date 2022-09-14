@@ -24,8 +24,10 @@ module M2ySenff
       response = @request.get(@url + ACCOUNT_PATH + "?nrCliente=#{id}&nrInst=#{nrinst}")
       p response
       account = []
-      response.each do |acc|
-        if acc[:dsProd].include?('Conta Garantida')
+      return response if response.nil? || response.empty?
+
+      response['contas'].each do |acc|
+        if acc['dsProd'].include?('Conta Garantida')
           account.push acc
           break
         else
