@@ -7,6 +7,8 @@ module M2ySenff
   SCOPE = 'qrcode_api'
   GRANT_TYPE = 'client_credentials'
   PIX_AUTH_PATH = '/auth/oauth2/token'
+  LIMITS_AUTH_PATH = '/connect/token'
+  PIX_LIMITS_NIGHTTIME = '/MeuLimitePixPJ/HorarioMeuLimite'
   PIX_ADD_KEY_PATH = '/dict/chave/incluir/'
   PIX_REMOVE_KEY_PATH = '/dict/chave/excluir/'
   PIX_LIST_KEYS_PATH = '/dict/chave/listar/chave'
@@ -52,7 +54,7 @@ module M2ySenff
 
   # BILLETTS
   BILLETS_PATH = '/API/BJ08M01/BJ08M01/BJ08SS0102G/gerarBoleto'
-  
+
   # LOAN
   WORKING_CAPITAL_CONTRACTS_LIST = '/BJ04M06/contratos/contratosWFCliente'
   WORKING_CAPITAL_GET_CONTRACT = '/BJ04M06/contratos/contrato/pesquisaContrato'
