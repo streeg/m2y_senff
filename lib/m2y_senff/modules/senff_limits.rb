@@ -23,5 +23,18 @@ module M2ySenff
         nil
       end
     end
+
+    def list_limits_pix(body)
+      refreshToken
+      url = @url + LIST_LIMITS_PIX + "?Documento=#{body[:cnpj]}"
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.get(url, verify: false, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
   end
 end
