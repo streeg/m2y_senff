@@ -9,6 +9,7 @@ module M2ySenff
   PIX_AUTH_PATH = '/auth/oauth2/token'
   LIMITS_AUTH_PATH = '/connect/token'
   PIX_LIMITS_NIGHTTIME = '/MeuLimitePixPJ/HorarioMeuLimite'
+  LIST_LIMITS_PIX = '/MeuLimitePixPJ/ValorMeuLimite'
   PIX_ADD_KEY_PATH = '/dict/chave/incluir/'
   PIX_REMOVE_KEY_PATH = '/dict/chave/excluir/'
   PIX_LIST_KEYS_PATH = '/dict/chave/listar/chave'
