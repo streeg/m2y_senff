@@ -25,7 +25,7 @@ module M2ySenff
       p response
       account = []
       response['contas']&.each do |acc|
-        if acc['dsProd'].include?('Conta Garantida')
+        if acc['dsProd'].include?('Conta Garantida') && !acc['vlLime'].zero?
           account.push acc
           break
         else
