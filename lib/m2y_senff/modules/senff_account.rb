@@ -25,13 +25,14 @@ module M2ySenff
       p response
       account = []
       response['contas'].each do |acc|
-        if acc['dsProd'].include?('Conta Garantida') && !account[0]['vlLime'].zero?
+        if acc['dsProd'].include?('Conta Garantida') && !acc['vlLime'].zero?
           account.push acc
           break
         else
           next
         end
       end
+      SenffModel.new(account.first)
     end
 
     def findAccount(params)
