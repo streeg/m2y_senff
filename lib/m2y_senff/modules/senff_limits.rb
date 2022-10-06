@@ -24,6 +24,32 @@ module M2ySenff
       end
     end
 
+    def update_nighttime(body)
+      refreshToken
+      url = @url + PIX_LIMITS_NIGHTTIME
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.post(url, verify: false, body: body.to_json, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
+    def update_limit_pix(body)
+      refreshToken
+      url = @url + LIST_LIMITS_PIX
+      headers = json_headers
+      headers['Authorization'] = "Bearer #{SenffHelper.get_token(@client_secret)}"
+      req = HTTParty.post(url, verify: false, body: body.to_json, headers: headers)
+      begin
+        SenffModel.new(req.parsed_response)
+      rescue StandardError
+        nil
+      end
+    end
+
     def list_limits_pix(body)
       refreshToken
       url = @url + LIST_LIMITS_PIX + "?Documento=#{body[:cnpj]}"
