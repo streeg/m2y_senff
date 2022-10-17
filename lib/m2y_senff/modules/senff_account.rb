@@ -79,7 +79,7 @@ module M2ySenff
         transactions = []
       else
         response = @request.post(@url + FUTURE_EXTRACT_PATH, params)
-        transactions = response['listaLancFuturos']
+        transactions = response.nil? ? nil : response['listaLancFuturos']
       end
 
       # fixing cdt_fields
