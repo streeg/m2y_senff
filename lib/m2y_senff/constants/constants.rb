@@ -57,7 +57,7 @@ module M2ySenff
   BILLETS_PATH = '/API/BJ08M01/BJ08M01/BJ08SS0102G/gerarBoleto'
 
   # LOAN
-  WORKING_CAPITAL_CONTRACTS_LIST = '/BJ04M06/contratos/contratosWFCliente'
+  WORKING_CAPITAL_CONTRACTS_LIST = '/BJ04M06/contratos'
   WORKING_CAPITAL_GET_CONTRACT = '/BJ04M06/contratos/contrato/pesquisaContrato'
 
   # PAYMENTS
