@@ -4,11 +4,17 @@ module M2ySenff
       startModule(access_key, secret_key, url)
     end
 
-    def getAccounts(id)
+    def getAccounts(id, account_code = nil)
       nrinst = getInstitution
       response = @request.get(@url + ACCOUNT_PATH + "?nrCliente=#{id}&nrInst=#{nrinst}")
       p response
-      account = SenffModel.new(response['contas'].first)
+
+      if account_code.blank?
+        account = SenffModel.new(response['contas'].first)
+      else
+        response_account = response['contas']&.find { |acc| acc['cdCta'].eql?(account_code) }
+        account = response_account.present? ? SenffModel.new(response_account) : SenffModel.new(response['contas'].first)
+      end
       # fixing cdt_fields
       if !account.nil? && !account.cdCta.nil?
         account.saldoDisponivelGlobal = account.vlSdds
